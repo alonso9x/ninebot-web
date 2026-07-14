@@ -37,7 +37,7 @@ export default function Home() {
             </Link>
           </nav>
 
-          <a href="tel:0917747777" className="hidden lg:flex items-center gap-2 font-bold text-red-500 hover:text-white transition-all duration-300 text-lg tracking-wider px-6 py-2 rounded-full border border-red-600/30 hover:bg-red-600 hover:shadow-[0_0_20px_rgba(220,38,38,0.4)]">
+          <a href="tel:091.774.7777" className="hidden lg:flex items-center gap-2 font-bold text-red-500 hover:text-white transition-all duration-300 text-lg tracking-wider px-6 py-2 rounded-full border border-red-600/30 hover:bg-red-600 hover:shadow-[0_0_20px_rgba(220,38,38,0.4)]">
             <span className="animate-pulse w-2 h-2 bg-red-500 rounded-full inline-block"></span>
             091.774.7777
           </a>
@@ -102,7 +102,7 @@ export default function Home() {
             <p className="text-gray-400 text-lg mb-10 relative z-10">Kết nối trực tiếp để thảo luận kỹ thuật chuyên sâu và kiến trúc hệ thống.</p>
             
             <a 
-              href="tel:0917747777" 
+              href="tel:091.774.7777" 
               className="relative z-10 inline-flex items-center justify-center w-full sm:w-auto px-10 py-5 font-black text-white bg-red-600 rounded-xl hover:bg-red-500 transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_40px_rgba(220,38,38,0.8)] hover:-translate-y-2"
             >
               <span className="text-2xl tracking-[0.2em]">091.774.7777</span>
