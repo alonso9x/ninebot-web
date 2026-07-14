@@ -1,12 +1,15 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans selection:bg-red-600 selection:text-white relative overflow-hidden">
       
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[32px_32px]"></div>
 
       <header className="bg-black/60 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -26,6 +29,7 @@ export default function Home() {
             </h1>
           </Link>
 
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-10 font-medium text-gray-300">
             <Link href="/ky-thuat" className="hover:text-white transition-colors duration-300 uppercase tracking-widest text-sm relative group">
               Kỹ thuật lập trình
@@ -37,15 +41,49 @@ export default function Home() {
             </Link>
           </nav>
 
+          {/* Mobile Menu Toggle Button */}
+          <button 
+            className="md:hidden text-white hover:text-red-500 transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {isMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+              )}
+            </svg>
+          </button>
+
           <a href="tel:091.774.7777" className="hidden lg:flex items-center gap-2 font-bold text-red-500 hover:text-white transition-all duration-300 text-lg tracking-wider px-6 py-2 rounded-full border border-red-600/30 hover:bg-red-600 hover:shadow-[0_0_20px_rgba(220,38,38,0.4)]">
             <span className="animate-pulse w-2 h-2 bg-red-500 rounded-full inline-block"></span>
             091.774.7777
           </a>
 
         </div>
+
+        {/* Mobile Dropdown Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-black/95 border-b border-white/10 p-6 flex flex-col gap-6 text-center animate-fade-in">
+            <Link 
+              href="/ky-thuat" 
+              className="text-lg uppercase tracking-widest py-2 border-b border-white/5 text-gray-300 hover:text-red-500 transition-colors" 
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Kỹ thuật lập trình
+            </Link>
+            <Link 
+              href="/tin-tuc" 
+              className="text-lg uppercase tracking-widest py-2 border-b border-white/5 text-gray-300 hover:text-orange-500 transition-colors" 
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Tin tức AI Toàn cầu
+            </Link>
+          </div>
+        )}
       </header>
 
-      <section className="relative w-full h-[85vh] mt-[80px] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[85vh] mt-20 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/images/banner1.jpg" 
@@ -55,13 +93,13 @@ export default function Home() {
             className="object-cover opacity-40 scale-110 animate-[pulse_10s_ease-in-out_infinite_alternate]"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/60 to-[#0a0a0a]"></div>
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#0a0a0a]/60 to-[#0a0a0a]"></div>
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-5xl mt-16 animate-fade-in-up">
           <h2 className="text-5xl md:text-8xl font-black text-white mb-6 drop-shadow-2xl uppercase tracking-tighter leading-[1.1]">
             Kiến tạo tương lai <br/> 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-orange-500 to-red-600 animate-[gradient_3s_ease_infinite] bg-[length:200%_auto]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-red-600 via-orange-500 to-red-600 animate-[gradient_3s_ease_infinite] bg-size-[200%_auto]">
               Từ những dòng code
             </span>
           </h2>
@@ -80,9 +118,9 @@ export default function Home() {
       <section className="max-w-7xl mx-auto pt-10 pb-20 px-4 sm:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
-          <div className="bg-white/[0.03] p-10 md:p-14 rounded-[2rem] border border-white/10 backdrop-blur-md shadow-[0_0_40px_rgba(0,0,0,0.8)] animate-fade-in-up delay-200 hover:border-red-600/30 transition-colors duration-500">
+          <div className="bg-white/3 p-10 md:p-14 rounded-4xl border border-white/10 backdrop-blur-md shadow-[0_0_40px_rgba(0,0,0,0.8)] animate-fade-in-up delay-200 hover:border-red-600/30 transition-colors duration-500">
             <h3 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-wide mb-8 flex items-center gap-4">
-              <span className="w-12 h-1 bg-gradient-to-r from-red-600 to-transparent"></span>
+              <span className="w-12 h-1 bg-linear-to-r from-red-600 to-transparent"></span>
               Tinh hoa công nghệ
             </h3>
             <div className="space-y-6 text-lg text-gray-300 leading-relaxed font-light">
@@ -95,7 +133,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-red-900/40 to-black p-10 md:p-14 rounded-[2rem] border border-red-600/20 shadow-[0_0_30px_rgba(220,38,38,0.15)] relative overflow-hidden animate-fade-in-up delay-300 group">
+          <div className="bg-linear-to-br from-red-900/40 to-black p-10 md:p-14 rounded-4xl border border-red-600/20 shadow-[0_0_30px_rgba(220,38,38,0.15)] relative overflow-hidden animate-fade-in-up delay-300 group">
             <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-red-600/20 blur-[100px] rounded-full transition-transform duration-700 group-hover:scale-150"></div>
             
             <h4 className="text-3xl font-bold text-white mb-4 relative z-10">Sẵn sàng khởi động dự án?</h4>

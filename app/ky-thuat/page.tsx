@@ -63,7 +63,7 @@ export default function KyThuatPage() {
     <main className="min-h-screen bg-[#050505] text-gray-100 font-sans pt-24 pb-20 px-4 sm:px-6 relative overflow-hidden selection:bg-red-600 selection:text-white">
       
       {/* Nền lưới kỹ thuật Radar */}
-      <div className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,#000_100%),linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:100%_100%,40px_40px,40px_40px]"></div>
+      <div className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,#000_100%),linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-size-[100%_100%,40px_40px,40px_40px]"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -74,15 +74,15 @@ export default function KyThuatPage() {
               <span className="mr-2 transform group-hover:-translate-x-1 transition-transform">&larr;</span> Trạm điều khiển trung tâm
             </Link>
             <h1 className="text-5xl md:text-7xl font-black text-white mb-2 uppercase tracking-tighter drop-shadow-lg">
-              Lộ trình <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500">Kỹ thuật</span>
+              Lộ trình <span className="text-transparent bg-clip-text bg-linear-to-r from-red-600 to-orange-500">Kỹ thuật</span>
             </h1>
             <p className="text-xl text-gray-400 font-light tracking-wide max-w-3xl mt-4">
               Hệ thống hóa kiến thức lập trình robot theo chuẩn công nghiệp. Đi từ những dòng lệnh C++ sơ khai đến kiến trúc mạng nơ-ron phân tán.
             </p>
           </div>
 
-          <a href="tel:0917747777" className="group relative flex flex-col items-center justify-center p-6 bg-black/50 border border-red-600/30 rounded-2xl hover:border-red-500 transition-all duration-300 min-w-[280px] overflow-hidden backdrop-blur-sm">
-            <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <a href="tel:0917747777" className="group relative flex flex-col items-center justify-center p-6 bg-black/50 border border-red-600/30 rounded-2xl hover:border-red-500 transition-all duration-300 min-w-70 overflow-hidden backdrop-blur-sm">
+            <div className="absolute inset-0 bg-linear-to-r from-red-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <span className="text-red-500/80 group-hover:text-red-400 text-xs uppercase tracking-[0.3em] mb-2 font-bold z-10">Hotline Kỹ Thuật Tốc Độ Cao</span>
             <span className="text-3xl font-black text-white tracking-widest z-10 drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]">091.774.7777</span>
           </a>
@@ -99,7 +99,7 @@ export default function KyThuatPage() {
               <div key={level.id} className="relative">
                 
                 {/* Dấu chấm Node trên Timeline */}
-                <div className={`absolute -left-[41px] md:-left-[57px] top-2 w-6 h-6 rounded-full border-4 border-[#050505] ${level.bgGlow} shadow-[0_0_20px_currentColor] ${level.color} flex items-center justify-center`}>
+                <div className={`absolute -left-10.25 md:-left-14.25 top-2 w-6 h-6 rounded-full border-4 border-[#050505] ${level.bgGlow} shadow-[0_0_20px_currentColor] ${level.color} flex items-center justify-center`}>
                   <div className={`w-2 h-2 rounded-full bg-current`}></div>
                 </div>
 
@@ -134,7 +134,7 @@ export default function KyThuatPage() {
                         {article.title}
                       </h3>
                       
-                      <p className="text-gray-500 text-sm mb-8 flex-grow relative z-10 leading-relaxed group-hover:text-gray-400 transition-colors">
+                      <p className="text-gray-500 text-sm mb-8 grow relative z-10 leading-relaxed group-hover:text-gray-400 transition-colors">
                         {article.excerpt}
                       </p>
 

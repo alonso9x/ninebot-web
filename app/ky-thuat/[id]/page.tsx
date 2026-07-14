@@ -17,9 +17,11 @@ async function getArticle(id: string) {
   }
 }
 
-export default async function ArticleDetail({ params }: { params: { id: string } }) {
-  // Lấy id từ URL
-  const { id } = await params;
+export default async function ArticleDetail({ params }: { params: Promise<{ id: string }> }) {
+  // Lấy id từ URL (Next.js 15 requires awaiting params)
+  const resolvedParams = await params;
+  const id = resolvedParams.id;
+  
   const article = await getArticle(id);
 
   // Nếu không tìm thấy bài viết
@@ -38,7 +40,7 @@ export default async function ArticleDetail({ params }: { params: { id: string }
     <main className="min-h-screen bg-[#050505] text-gray-300 font-sans pt-24 pb-20 relative overflow-hidden selection:bg-red-600 selection:text-white">
       
       {/* Nền lưới kỹ thuật */}
-      <div className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,#000_100%),linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:100%_100%,40px_40px,40px_40px]"></div>
+      <div className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,#000_100%),linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-size-[100%_100%,40px_40px,40px_40px]"></div>
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         
@@ -70,7 +72,7 @@ export default async function ArticleDetail({ params }: { params: { id: string }
         />
 
         {/* Call to Action */}
-        <div className="mt-20 p-8 rounded-2xl bg-gradient-to-br from-neutral-900 to-black border border-neutral-800 text-center">
+        <div className="mt-20 p-8 rounded-2xl bg-linear-to-br from-neutral-900 to-black border border-neutral-800 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">Gặp khó khăn khi nạp code?</h3>
           <p className="text-gray-400 mb-8">Đội ngũ kỹ thuật Ninebot luôn sẵn sàng hỗ trợ bạn debug và giải quyết các vấn đề phần cứng trực tiếp.</p>
           <a href="tel:0917747777" className="inline-block bg-red-600 text-white font-black text-xl px-10 py-4 rounded-xl uppercase tracking-widest hover:bg-red-500 transition-colors shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_40px_rgba(220,38,38,0.6)]">
