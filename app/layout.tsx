@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleTagManager } from '@next/third-parties/google'; 
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "NINEBOT.VN",
     images: [
       {
-        url: "/images/banner1.jpg", 
+        url: "/images/banner1.jpg",
         width: 1200,
         height: 630,
         alt: "NINEBOT.VN Banner",
@@ -73,8 +74,11 @@ export default function RootLayout({
       lang="vi"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      {/* Tích hợp Google Tag Manager */}
+      <GoogleTagManager gtmId="GTM-KHVPHRB7" />
+      
       <body className="min-h-full flex flex-col bg-[#050505]">
-        {/* Chèn thẳng Schema Markup vào đây để Google đọc ngay khi load trang */}
+        {/* Khai báo Schema Entity cho Google Bot */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
