@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "NINEBOT.VN",
     images: [
       {
-        url: "/images/banner1.jpg", // Lấy luôn cái ảnh banner xịn xò của ông làm hình đại diện khi share link
+        url: "/images/banner1.jpg", 
         width: 1200,
         height: 630,
         alt: "NINEBOT.VN Banner",
@@ -73,7 +73,26 @@ export default function RootLayout({
       lang="vi"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#050505]">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#050505]">
+        {/* Chèn thẳng Schema Markup vào đây để Google đọc ngay khi load trang */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Ninebot.vn",
+              "url": "https://ninebot.vn",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://ninebot.vn/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
